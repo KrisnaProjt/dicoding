@@ -7,3 +7,5 @@ pip install seaborn streamlit
 ```
 streamlit run Submission.py
 ```
+# Streamlit App
+https://krisnaprojt-dicoding-submission-dataanalis-0umcz2.streamlit.app/
