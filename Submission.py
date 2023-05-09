@@ -59,7 +59,7 @@ colors = ["#72BCD4", "#72BCD4", "#72BCD4", "#72BCD4", "#72BCD4"]
 sns.barplot(x="hr", y="cnt_x", data=main_df, palette=colors, ax=ax)
 ax.set_ylabel(None)
 ax.set_xlabel(None)
-ax.set_title("Total User of Bike Rental", loc="center", fontsize=15)
+ax.set_title("User Rental (on Hour)", loc="center", fontsize=15)
 ax.tick_params(axis='y', labelsize=12)
 
 st.pyplot(fig)
@@ -84,7 +84,7 @@ colors = ["#72BCD4", "#72BCD4", "#72BCD4", "#72BCD4", "#72BCD4"]
 sns.barplot(x="hr", y="casual_x", data=main_df, palette=colors, ax=ax)
 ax.set_ylabel(None)
 ax.set_xlabel(None)
-ax.set_title("Casual User of Bike Rental", loc="center", fontsize=15)
+ax.set_title("Casual User", loc="center", fontsize=15)
 ax.tick_params(axis='y', labelsize=12)
 st.pyplot(fig)
 
@@ -94,7 +94,7 @@ ax.set_ylabel(None)
 ax.set_xlabel(None)
 ax.yaxis.set_label_position("right")
 ax.yaxis.tick_right()
-ax.set_title("Registered User of Bike Rental", loc="center", fontsize=15)
+ax.set_title("Registered User", loc="center", fontsize=15)
 ax.tick_params(axis='y', labelsize=12)
 st.pyplot(fig)
 
