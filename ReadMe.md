@@ -11,4 +11,5 @@ streamlit run Submission.py
 https://krisnaprojt-dicoding-submission-dataanalis-0umcz2.streamlit.app/
 
 Dashboard: 
-![alt text](https://github.com/KrisnaProjt/dicoding/blob/14c2967d7e94620237bf0a4ba1c5f1484e2669a3/Jepretan%20Layar%202023-05-09%20pukul%2009.55.33.png "Dashboard")
+![Jepretan Layar 2023-05-09 pukul 09 55 33](https://user-images.githubusercontent.com/132922374/236995483-59e5c475-fc46-4c96-9022-662c9889b3a4.png)
+
