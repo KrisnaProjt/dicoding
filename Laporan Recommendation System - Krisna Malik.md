@@ -51,9 +51,41 @@ Variabel-variabel pada file rating adalah sebagai berikut:
 
 ## Data Preparation
 
-1. Langkah pertama yang dilakukan adalah melihat apakah ada nilai kosong pada dataset kita
+1. Langkah pertama yang dilakukan adalah melihat apakah ada nilai kosong pada dataset anime
+2. Lalu melihat genre apa saja yang ada pada dataset tersebut, ternyata genre yang ditampilkan masih banyak dan berantakan
+3. Berdasarkan hasil analisis, masih ada genre yang menggunakan spasi dan juga karakter lain, misalnya '-' oleh karena itu kita harus menghilangkannya
+4. Selanjutnya adalah melihat dibaris mana saja yang mempunyai nilai null, terdapat 3 kolom yang masih mempunyai data kosong, yaitu rating, genre dan type
+5. Untuk type dan genre, data yang kosong akan kita isi dengan unknown sedangkan untuk kolom rating data kosong akan kita isi dengan 0
+6. Setelah data anime sudah bersih, kita akan membuat dataset baru dengan menggabungkan data anime dan rating dengan parameter 'anime_id' sehingga nanti dapat dilihat setiap user pada dataset rating memberikan rating pada aniem apa
+7. Selanjutnya kita bersihkan kembali data anime_rating yang merupakan gabungan antara data anime dan rating dengan menghapus baris yang mempunyai nilai null
+8. Untuk pemrosesan Content-based Filtering kita akan menghapus duplikasi yang ada pada data anime dan membuat vektor untuk setiap genre
+9. Selanjutnya kita akan melihat nilai korelasi antara judul anime dan genrenya
+10. Lalu kita akan menghitung cosine similarity untuk dijadikan dasar dalam Content-based Filtering dan kita lakukan pengujian apakah sudah berhasil memberikan rekomendasi yang sesuai atau belum
+11. Untuk melakukan Collaborative Filtering kita memerlukan dataset rating
+12. Langkah pertama adalah melakukan encoding kolom yang dibutuhkan, dalam proyek ini adalah kolom anime id dan user id
+13. Setelah dilakukan encoding, kita akan menambahkan kolom hasil encoding kedalam dataset rating kita yang sebelumnya
+14. Untuk mendapatkan data training dan validasi, kita perlu melakukan pengacakan pada dataset yang sudah kita buat sebelumnya lalu kita bagi menjadi 80% dan 20%
+15. Model kita akan menerapkan 4 layer embedding yaitu user embedding, anime embedding, user bias dan anime bias
+16. 
 
 ## Modeling
+
+Pada proyek ini digunakan dua sistem rekomendasi, yaitu:
+1. Collaborative Filtering
+2. Content-based Filtering
+
+## Collaborative Filtering
+Sistem rekomendasi 
+## Content-based Filtering
+Sistem rekomendasi menggunakan Content-based Filtering akan sangat berguna jika dapat diaplikasikan untuk memberi rekomendasi saat user memilih atau sedang mencari sebuah anime. Karena konsep dasar dari sistem rekomendasi ini adalah melihat hubungan atau kedekatan setiap 'genre' sehingga user dapat melihat dan menentukan judul anime apa yang mirip dengan anime yang sedang dia cari atau yang dia pilih. Berikut adalah contoh hasil dari Content-based Filtering jika user mencari atau memilih anime dengan judul 'Naruto' dan genre dari Naruto adalah Action,Comedy,MartialArts,Shounen,SuperPower :
+| | name| genre  
+|-|-----|-----|
+|1|	Naruto Soyokazeden Movie: Naruto to Mashin to ...	| Action,Comedy,MartialArts,Shounen,SuperPower |
+|2|	Boruto: Naruto the Movie	| Action,Comedy,MartialArts,Shounen,SuperPower |
+|3|	Naruto x UT	| Action,Comedy,MartialArts,Shounen,SuperPower |
+|4|	Naruto: Shippuuden Movie 4 - The Lost Tower |	Action,Comedy,MartialArts,Shounen,SuperPower |
+|5|	Naruto: Shippuuden Movie 3 - Hi no Ishi wo Tsu...	| Action,Comedy,MartialArts,Shounen,SuperPower |
+
 Tahapan ini membahas mengenai model sisten rekomendasi yang Anda buat untuk menyelesaikan permasalahan. Sajikan top-N recommendation sebagai output.
 
 **Rubrik/Kriteria Tambahan (Opsional)**: 
@@ -65,11 +97,3 @@ Pada bagian ini Anda perlu menyebutkan metrik evaluasi yang digunakan. Kemudian,
 
 Ingatlah, metrik evaluasi yang digunakan harus sesuai dengan konteks data, problem statement, dan solusi yang diinginkan.
 
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan formula metrik dan bagaimana metrik tersebut bekerja.
-
-**---Ini adalah bagian akhir laporan---**
-
-_Catatan:_
-- _Anda dapat menambahkan gambar, kode, atau tabel ke dalam laporan jika diperlukan. Temukan caranya pada contoh dokumen markdown di situs editor [Dillinger](https://dillinger.io/), [Github Guides: Mastering markdown](https://guides.github.com/features/mastering-markdown/), atau sumber lain di internet. Semangat!_
-- Jika terdapat penjelasan yang harus menyertakan code snippet, tuliskan dengan sewajarnya. Tidak perlu menuliskan keseluruhan kode project, cukup bagian yang ingin dijelaskan saja.
