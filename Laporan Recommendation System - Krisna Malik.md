@@ -73,7 +73,26 @@ Pada proyek ini digunakan dua sistem rekomendasi, yaitu:
 ## Collaborative Filtering
 
 Sistem rekomendasi menggunakan data rating yang berasal dari user dengan anggapan bahwa user tersebut sudah pernah menonton anime tersebut. Untuk menentukan rekomendasi model yang dibuat akan mengambil data rating yang pernah diberikan oleh user dan akan mencari anime apa yang lebih cocok berdasarkan jenis anime yang user berikan rating tinggi. Sistem rekomendasi ini lebih cocok digunakan ketika seorang user telah menonton sebuah anime dan memberikan rating terhadap anime tersebut karena metode ini akan memberikan rekomendasi yang lebih sesuai dengan riwayat tontonan user.
-Berikut adalah contoh 
+Berikut adalah contoh rekomendasi untuk user 15029:
+
+Anime with high ratings from user
+|anime name|genre|
+|-|----|
+|Plastic Memories | Drama,Romance,SciFi|
+|Kyoukai no Kanata | Fantasy,SliceofLife,Supernatural|
+|Toaru Kagaku no Railgun S | Action,SciFi,SuperPower|
+|Shelter | Music,SciFi|
+|Kokoro Connect: Michi Random | Comedy,Drama,Romance,School,SliceofLife,Supernatural|
+
+Top 5 anime recommendation
+|anime name|genre|
+|-|----|
+|K-On!! | Comedy,Music,School,SliceofLife|
+|Top wo Nerae 2! Diebuster | Action,Comedy,Mecha,SciFi,Space|
+|Yojouhan Shinwa Taikei | Mystery,Psychological,Romance|
+|Wolf&#039;s Rain OVA | Adventure,Drama,Psychological,SciFi,Supernatural|
+|Prince of Tennis The National Tournament | Action,Comedy,Shounen,Sports|
+
 
 Model yang digunakan untuk membuat Collaborative Filtering ini adalah 4 layer embedding dengan initializer he_normal dan regularizers l2(1e-6)
 initializer he_normal digunakan untuk membuat distribusi data menjadi normal dan regularizers l2(1e-6) digunakan untuk menyerdahanakan nilai input dengan mereduksi kuadrat dari nilai input tersebut.
@@ -91,11 +110,13 @@ Berikut adalah contoh hasil dari Content-based Filtering jika user mencari atau 
 |5|	Naruto: Shippuuden Movie 3 - Hi no Ishi wo Tsu...	| Action,Comedy,MartialArts,Shounen,SuperPower |
 
 
+Berdasarkan dua hasil rekomendasi diatas keduanya sudah cukup baik. Content-based filtering akan menampilkan jenis anime yang lebih spesifik termasuk judul dan genre,sedangkan collaborative filtering menampilkan anime yang lebih beragam baik dari segi judul dan genre.
 
 ## Evaluation
 
 Metrik evaluasi yang digunakan adalah Root Mean Squared Error (RMSE) matriks RMSE digunakan untuk melihat perbedaan hasil nilai prediksi dengan nilai asli. Semakin kecil nilai matriks ini maka semakin akurat model yang kita buat.
 
+Karena keterbatasan sumber daya, maka proses training hanya dilakukan dalam satu kali epoch dengan 128 batch_size. Dari hasil training tersebut rekomendasi anime yang diberikan oleh model sudah cukup sesuai dengan apa yang sebelumnya sudah user tonton dan berikan rating.
 
-Ingatlah, metrik evaluasi yang digunakan harus sesuai dengan konteks data, problem statement, dan solusi yang diinginkan.
-
+Nilai RMSE yang didapat pada saat training adalah 0.3154 dan pada saat validasi adalah 0.3317.
+Nilai tersebut sudah termasuk kecil (mendekati 0) namun perlu training tambahan untuk mendapatkan hasil yang lebih akurat atau nilai RMSE yang lebih kecil lagi.
