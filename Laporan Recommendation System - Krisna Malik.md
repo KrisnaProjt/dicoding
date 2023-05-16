@@ -10,9 +10,7 @@ Semakin banyak koleksi anime pada suatu situs maka kemungkinan besar banyak user
 
 ## Business Understanding
 
-Pada sebuah situs streaming, user akan menemukan banyak anime namun belum tentu cocok dengan selera mereka. Oleh karena itu diperlukan sebuah sistem rekomendasi berdasarkan preferensi dari user
-
-Bagian laporan ini mencakup:
+Pada sebuah situs streaming, user akan menemukan banyak anime namun belum tentu cocok dengan selera mereka. Oleh karena itu diperlukan sebuah sistem rekomendasi berdasarkan preferensi dari user.
 
 ### Problem Statements
 
@@ -65,8 +63,6 @@ Variabel-variabel pada file rating adalah sebagai berikut:
 12. Langkah pertama adalah melakukan encoding kolom yang dibutuhkan, dalam proyek ini adalah kolom anime id dan user id
 13. Setelah dilakukan encoding, kita akan menambahkan kolom hasil encoding kedalam dataset rating kita yang sebelumnya
 14. Untuk mendapatkan data training dan validasi, kita perlu melakukan pengacakan pada dataset yang sudah kita buat sebelumnya lalu kita bagi menjadi 80% dan 20%
-15. Model kita akan menerapkan 4 layer embedding yaitu user embedding, anime embedding, user bias dan anime bias
-16. 
 
 ## Modeling
 
@@ -75,9 +71,17 @@ Pada proyek ini digunakan dua sistem rekomendasi, yaitu:
 2. Content-based Filtering
 
 ## Collaborative Filtering
-Sistem rekomendasi 
+
+Sistem rekomendasi menggunakan data rating yang berasal dari user dengan anggapan bahwa user tersebut sudah pernah menonton anime tersebut. Untuk menentukan rekomendasi model yang dibuat akan mengambil data rating yang pernah diberikan oleh user dan akan mencari anime apa yang lebih cocok berdasarkan jenis anime yang user berikan rating tinggi. Sistem rekomendasi ini lebih cocok digunakan ketika seorang user telah menonton sebuah anime dan memberikan rating terhadap anime tersebut karena metode ini akan memberikan rekomendasi yang lebih sesuai dengan riwayat tontonan user.
+Berikut adalah contoh 
+
+Model yang digunakan untuk membuat Collaborative Filtering ini adalah 4 layer embedding dengan initializer he_normal dan regularizers l2(1e-6)
+initializer he_normal digunakan untuk membuat distribusi data menjadi normal dan regularizers l2(1e-6) digunakan untuk menyerdahanakan nilai input dengan mereduksi kuadrat dari nilai input tersebut.
+
 ## Content-based Filtering
-Sistem rekomendasi menggunakan Content-based Filtering akan sangat berguna jika dapat diaplikasikan untuk memberi rekomendasi saat user memilih atau sedang mencari sebuah anime. Karena konsep dasar dari sistem rekomendasi ini adalah melihat hubungan atau kedekatan setiap 'genre' sehingga user dapat melihat dan menentukan judul anime apa yang mirip dengan anime yang sedang dia cari atau yang dia pilih. Berikut adalah contoh hasil dari Content-based Filtering jika user mencari atau memilih anime dengan judul 'Naruto' dan genre dari Naruto adalah Action,Comedy,MartialArts,Shounen,SuperPower :
+
+Sistem rekomendasi menggunakan Content-based Filtering akan sangat berguna jika dapat diaplikasikan untuk memberi rekomendasi saat user memilih atau sedang mencari sebuah anime. Karena konsep dasar dari sistem rekomendasi ini adalah melihat hubungan atau kedekatan setiap 'genre' sehingga user dapat melihat dan menentukan judul anime apa yang mirip dengan anime yang sedang dia cari atau yang dia pilih. 
+Berikut adalah contoh hasil dari Content-based Filtering jika user mencari atau memilih anime dengan judul 'Naruto' dan genre dari Naruto adalah Action,Comedy,MartialArts,Shounen,SuperPower :
 | | name| genre  
 |-|-----|-----|
 |1|	Naruto Soyokazeden Movie: Naruto to Mashin to ...	| Action,Comedy,MartialArts,Shounen,SuperPower |
@@ -86,14 +90,12 @@ Sistem rekomendasi menggunakan Content-based Filtering akan sangat berguna jika 
 |4|	Naruto: Shippuuden Movie 4 - The Lost Tower |	Action,Comedy,MartialArts,Shounen,SuperPower |
 |5|	Naruto: Shippuuden Movie 3 - Hi no Ishi wo Tsu...	| Action,Comedy,MartialArts,Shounen,SuperPower |
 
-Tahapan ini membahas mengenai model sisten rekomendasi yang Anda buat untuk menyelesaikan permasalahan. Sajikan top-N recommendation sebagai output.
 
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menyajikan dua solusi rekomendasi dengan algoritma yang berbeda.
-- Menjelaskan kelebihan dan kekurangan dari solusi/pendekatan yang dipilih.
 
 ## Evaluation
-Pada bagian ini Anda perlu menyebutkan metrik evaluasi yang digunakan. Kemudian, jelaskan hasil proyek berdasarkan metrik evaluasi tersebut.
+
+Metrik evaluasi yang digunakan adalah Root Mean Squared Error (RMSE) matriks RMSE digunakan untuk melihat perbedaan hasil nilai prediksi dengan nilai asli. Semakin kecil nilai matriks ini maka semakin akurat model yang kita buat.
+
 
 Ingatlah, metrik evaluasi yang digunakan harus sesuai dengan konteks data, problem statement, dan solusi yang diinginkan.
 
